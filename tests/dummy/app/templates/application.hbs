@@ -1,0 +1,41 @@
+<h2 id="title">Welcome to Ember</h2>
+
+<h3>power-calendar</h3>
+<div id="power-calendar">
+  {{#power-calendar
+    center=someDate
+    selected=selected
+    onSelect=(action (mut selected) value="date")
+    onCenterChange=(action (mut someDate) value="date") as |cal|
+  }}
+    {{cal.nav}}
+    {{cal.days}}
+  {{/power-calendar}}
+</div>
+
+<h3>power-calendar-range</h3>
+<div id="power-calendar-range">
+  {{#power-calendar-range
+    center=someDate
+    selected=selectedRange
+    minRange="1w"
+    onSelect=(action (mut selectedRange) value="_date")
+    onCenterChange=(action (mut someDate) value="_date") as |cal|
+  }}
+    {{cal.nav}}
+    {{cal.days}}
+  {{/power-calendar-range}}
+</div>
+
+<h3>power-calendar-multiple</h3>
+<div id="power-calendar-multiple">
+  {{#power-calendar-multiple
+    center=someDate
+    selected=selectedMultiple
+    onSelect=(action (mut selectedMultiple) value="_date")
+    onCenterChange=(action (mut someDate) value="_date") as |cal|
+  }}
+    {{cal.nav}}
+    {{cal.days}}
+  {{/power-calendar-multiple}}
+</div>
