@@ -4,6 +4,7 @@ import {
   addMonths,
   addWeeks,
   differenceInMilliseconds,
+  endOfDay,
   endOfISOWeek,
   endOfMonth,
   format,
@@ -12,6 +13,7 @@ import {
   isAfter as _isAfter,
   isBefore as _isBefore,
   isSameDay,
+  startOfDay,
   startOfISOWeek,
   startOfMonth,
   startOfWeek as _startOfWeek,
@@ -49,6 +51,8 @@ export function startOf(date, unit) {
       return startOfISOWeek(date);
     case "week":
       return _startOfWeek(date);
+    case "day":
+      return startOfDay(date);
     default:
       throw unsupported('startOf', ...arguments);
   }
@@ -60,6 +64,8 @@ export function endOf(date, unit) {
       return endOfMonth(date);
     case "isoWeek":
       return endOfISOWeek(date);
+    case "day":
+      return endOfDay(date);
     default:
       throw unsupported('endOf', ...arguments);
   }
