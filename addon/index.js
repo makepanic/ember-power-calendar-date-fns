@@ -18,6 +18,7 @@ import {
   startOfMonth,
   startOfWeek as _startOfWeek,
 } from 'date-fns';
+import locales from 'date-fns/locale';
 import {DEBUG} from '@glimmer/env';
 
 function unsupported(method, param, ...args) {
@@ -36,10 +37,22 @@ export function add(date, quantity, unit) {
 }
 
 export function formatDate(date, dateFormat, locale = null) {
-  if (locale) {
-    return format(date, dateFormat, {locale});
+
+  /* date-fns now uses [Unicode Tokens]{@link https://date-fns.org/v2.2.1/docs/Unicode-Tokens} so the following flags are required:
+     - useAdditionalDayOfYearTokens is required to use the YYYY and YY tokens for year
+     - useAdditionalWeekYearTokens is required to use the DD and D tokens for day
+   */
+  if (locale && locales[locale]) {
+    return format(date, dateFormat, {
+      locale: locales[locale],
+      useAdditionalDayOfYearTokens: true,
+      useAdditionalWeekYearTokens: true
+    });
   } else {
-    return format(date, dateFormat);
+    return format(date, dateFormat, {
+      useAdditionalDayOfYearTokens: true,
+      useAdditionalWeekYearTokens: true
+    });
   }
 }
 
@@ -211,11 +224,14 @@ export function getDefaultLocale() {
   return 'en';
 }
 
-export function localeStartOfWeek() {
-  if (DEBUG) {
-    console.debug("Can't detect start of week automatically. Please configure `startOfWeek` in `calendar.days`. See https://ember-power-calendar.com/docs/the-days");
+export function localeStartOfWeek(locale) {
+  if (locale && locales[locale]) {
+    return getDay(_startOfWeek(new Date(), {
+      locale: locales[locale]
+    }));
+  } else {
+    return 0;
   }
-  return 0;
 }
 
 export function startOfWeek(day, startOfWeek) {
