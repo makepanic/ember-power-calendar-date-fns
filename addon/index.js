@@ -92,28 +92,51 @@ export function isoWeekday(date) {
   return getISODay(date);
 }
 
-export function getWeekdaysShort() {
-  if (DEBUG) {
-    console.debug("Calling `getWeekdaysShort` with ember-power-calendar-date-fns is discouraged as date-fns has no locale detection implemented. " +
-      "Please overwrite the power-calendar days component `weekdaysShort` method.");
+export function getWeekdaysShort(locale = null) {
+
+  if (locale && locales[locale]) {
+    const weekdaysShort = [];
+    for(let i=0; i<7; i++) {
+      weekdaysShort.push(locales[locale].localize.day(i, {
+        width: "abbreviated"
+      }))
+    }
+
+    return weekdaysShort;
+  } else {
+    return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   }
-  return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 }
 
-export function getWeekdaysMin() {
-  if (DEBUG) {
-    console.debug("Calling `getWeekdaysMin` with ember-power-calendar-date-fns is discouraged as date-fns has no locale detection implemented. " +
-      "Please overwrite the power-calendar days component `weekdaysMin` method.");
+export function getWeekdaysMin(locale = null) {
+
+  if (locale && locales[locale]) {
+    const weekdaysMin = [];
+    for (let i = 0; i < 7; i++) {
+      weekdaysMin.push(locales[locale].localize.day(i, {
+        width: "narrow"
+      }))
+    }
+    return weekdaysMin;
+  } else {
+    return ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
   }
-  return ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+
 }
 
-export function getWeekdays() {
-  if (DEBUG) {
-    console.debug("Calling `getWeekdays` with ember-power-calendar-date-fns is discouraged as date-fns has no locale detection implemented. " +
-      "Please overwrite the power-calendar days component `weekdays` method.");
+export function getWeekdays(locale = null) {
+  if (locale && locales[locale]) {
+    const weekdays = [];
+    for (let i = 0; i < 7; i++) {
+      weekdays.push(locales[locale].localize.day(i, {
+        width: "wide"
+      }))
+    }
+
+    return weekdays;
+  } else {
+    return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   }
-  return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 }
 
 export function isAfter(date1, date2) {
@@ -170,7 +193,7 @@ export function normalizeCalendarDay(day) {
 }
 
 export function withLocale(locale, fn) {
-  return fn();
+  return fn(locale);
 }
 
 export function normalizeCalendarValue(value) {
