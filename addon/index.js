@@ -18,6 +18,7 @@ import {
   startOfMonth,
   startOfWeek as _startOfWeek,
 } from 'date-fns';
+import locales from 'date-fns/locale';
 import {DEBUG} from '@glimmer/env';
 
 function unsupported(method, param, ...args) {
@@ -36,10 +37,22 @@ export function add(date, quantity, unit) {
 }
 
 export function formatDate(date, dateFormat, locale = null) {
-  if (locale) {
-    return format(date, dateFormat, {locale});
+
+  /* date-fns now uses [Unicode Tokens]{@link https://date-fns.org/v2.2.1/docs/Unicode-Tokens} so the following flags are required:
+     - useAdditionalDayOfYearTokens is required to use the YYYY and YY tokens for year
+     - useAdditionalWeekYearTokens is required to use the DD and D tokens for day
+   */
+  if (locale && locales[locale]) {
+    return format(date, dateFormat, {
+      locale: locales[locale],
+      useAdditionalDayOfYearTokens: true,
+      useAdditionalWeekYearTokens: true
+    });
   } else {
-    return format(date, dateFormat);
+    return format(date, dateFormat, {
+      useAdditionalDayOfYearTokens: true,
+      useAdditionalWeekYearTokens: true
+    });
   }
 }
 
@@ -79,28 +92,51 @@ export function isoWeekday(date) {
   return getISODay(date);
 }
 
-export function getWeekdaysShort() {
-  if (DEBUG) {
-    console.debug("Calling `getWeekdaysShort` with ember-power-calendar-date-fns is discouraged as date-fns has no locale detection implemented. " +
-      "Please overwrite the power-calendar days component `weekdaysShort` method.");
+export function getWeekdaysShort(locale = null) {
+
+  if (locale && locales[locale]) {
+    const weekdaysShort = [];
+    for(let i=0; i<7; i++) {
+      weekdaysShort.push(locales[locale].localize.day(i, {
+        width: "abbreviated"
+      }))
+    }
+
+    return weekdaysShort;
+  } else {
+    return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   }
-  return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 }
 
-export function getWeekdaysMin() {
-  if (DEBUG) {
-    console.debug("Calling `getWeekdaysMin` with ember-power-calendar-date-fns is discouraged as date-fns has no locale detection implemented. " +
-      "Please overwrite the power-calendar days component `weekdaysMin` method.");
+export function getWeekdaysMin(locale = null) {
+
+  if (locale && locales[locale]) {
+    const weekdaysMin = [];
+    for (let i = 0; i < 7; i++) {
+      weekdaysMin.push(locales[locale].localize.day(i, {
+        width: "narrow"
+      }))
+    }
+    return weekdaysMin;
+  } else {
+    return ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
   }
-  return ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+
 }
 
-export function getWeekdays() {
-  if (DEBUG) {
-    console.debug("Calling `getWeekdays` with ember-power-calendar-date-fns is discouraged as date-fns has no locale detection implemented. " +
-      "Please overwrite the power-calendar days component `weekdays` method.");
+export function getWeekdays(locale = null) {
+  if (locale && locales[locale]) {
+    const weekdays = [];
+    for (let i = 0; i < 7; i++) {
+      weekdays.push(locales[locale].localize.day(i, {
+        width: "wide"
+      }))
+    }
+
+    return weekdays;
+  } else {
+    return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   }
-  return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 }
 
 export function isAfter(date1, date2) {
@@ -157,7 +193,7 @@ export function normalizeCalendarDay(day) {
 }
 
 export function withLocale(locale, fn) {
-  return fn();
+  return fn(locale);
 }
 
 export function normalizeCalendarValue(value) {
@@ -211,11 +247,14 @@ export function getDefaultLocale() {
   return 'en';
 }
 
-export function localeStartOfWeek() {
-  if (DEBUG) {
-    console.debug("Can't detect start of week automatically. Please configure `startOfWeek` in `calendar.days`. See https://ember-power-calendar.com/docs/the-days");
+export function localeStartOfWeek(locale) {
+  if (locale && locales[locale]) {
+    return getDay(_startOfWeek(new Date(), {
+      locale: locales[locale]
+    }));
+  } else {
+    return 0;
   }
-  return 0;
 }
 
 export function startOfWeek(day, startOfWeek) {
