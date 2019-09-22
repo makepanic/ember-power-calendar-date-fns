@@ -47,7 +47,7 @@ You can implement your own DaysComponent by extending the default one.
 Simply overwrite methods that return i18n dependent data.
 
 ```ts
-import DaysComponent from 'ember-power-calendar/components/power-calendar-range/days';
+import DaysComponent from 'ember-power-calendar/components/power-calendar/days';
 import layout from 'ember-power-calendar/templates/components/power-calendar/days';
 
 export default class PowerCalendarDays extends DaysComponent {
