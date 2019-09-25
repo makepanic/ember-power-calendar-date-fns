@@ -44,11 +44,30 @@ The API can change in breaking ways based on the needs of Ember Power Calendar.
 
 ## I18n
 
-Because date-fns has no support for various i18n features, like `startOfWeek`, `weekdaysShort`, you have to implement these yourself.
+This addon provides multiple ways to localize the calendar.
+
+### Using date-fns/locale
+
+By default, `date-fns/locale` is imported and used if you configured the power-calendar locale.
+
+### DIY
+
+Alternatively, if you don't want to ship all of `date-fns/locale`, you can localize the calendar yourself.
+To do this, configure the addon by setting the `'ember-power-calendar-date-fns'` field as ember option: 
+
+```js
+const app = new EmberApp(defaults, {
+    'ember-power-calendar-date-fns': {
+      includeLocales: false
+    }
+});
+```
+
+Setting `includeLocales` to `false` excludes the date-fns localized modules.
+
 By default, this adapter implements any localization feature as a fallback, using the `en` locale.
 
-You can implement your own DaysComponent by extending the default one.
-Simply overwrite methods that return i18n dependent data.
+If you want to localize the dates yourself, extend the `DaysComponent` and implement localized methods, like `startOfWeek`, `weekdaysShort`:
 
 ```ts
 import DaysComponent from 'ember-power-calendar/components/power-calendar/days';
@@ -56,6 +75,8 @@ import layout from 'ember-power-calendar/templates/components/power-calendar/day
 
 export default class PowerCalendarDays extends DaysComponent {
   layout = layout;
+
+  startOfWeek = 1;
 
   @service intl!: IntlService;
 
