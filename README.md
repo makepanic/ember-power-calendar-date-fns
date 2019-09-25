@@ -20,6 +20,10 @@ Compatibility
 * Ember.js v2.18 or above
 * Ember CLI v2.13 or above
 
+| date-fns | ember-power-calendar-date-fns |
+| -------------:| -----:|
+| 1.x | &lt; 0.3 |
+| 2.x | &gt; 0.3 |
 
 Installation
 ------------------------------------------------------------------------------
