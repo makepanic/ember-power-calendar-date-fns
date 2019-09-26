@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/makepanic/ember-power-calendar-date-fns/compare/v0.3.1...v0.4.0) (2019-09-26)
+
+
+### chore
+
+* bump to ember-power-calendar >0.14 ([0f7c17e](https://github.com/makepanic/ember-power-calendar-date-fns/commit/0f7c17e)), closes [#9](https://github.com/makepanic/ember-power-calendar-date-fns/issues/9)
+
+
+### BREAKING CHANGES
+
+* this requires at least ember@3.11
+
+
+
 ### [0.3.1](https://github.com/makepanic/ember-power-calendar-date-fns/compare/v0.3.0...v0.3.1) (2019-09-26)
 
 
