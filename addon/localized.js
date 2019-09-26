@@ -1,4 +1,8 @@
+// DATE_FNS_LOCALE_START
+// Please don't remove the comments. We want the user to configure which date-fns/locale it wants.
 import locales from "date-fns/locale";
+// DATE_FNS_LOCALE_END
+
 import {startOfWeek as _startOfWeek, format, getDay} from "date-fns";
 import {
   getWeekdaysShort as unlocalizedWeekdaysShort,
@@ -49,10 +53,10 @@ export function formatDate(date, dateFormat, locale = null) {
   }
 }
 
-export function getWeekdaysShort(locale = null){
+export function getWeekdaysShort(locale = null) {
   if (locale && locales[locale]) {
     const weekdaysShort = [];
-    for(let i=0; i<7; i++) {
+    for (let i = 0; i < 7; i++) {
       weekdaysShort.push(locales[locale].localize.day(i, {
         width: "abbreviated"
       }))
