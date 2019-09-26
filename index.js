@@ -1,9 +1,37 @@
 'use strict';
 
+const Funnel = require('broccoli-funnel');
+const Replace = require('broccoli-string-replace');
+
 const optionsField = 'ember-power-calendar-date-fns';
 const defaultOptions = {
   includeLocales: true,
 };
+
+function localeVarName(locale) {
+  return locale.replace(/-/g, '_');
+}
+
+function buildLocaleImport(includeLocales) {
+  // include only configured locales
+  if (Array.isArray(includeLocales)) {
+    // build locale variable name pairs: Array<[string, string]>
+    const localePairs = includeLocales.map(locale => [locale, localeVarName(locale)]);
+    // build imports list
+    const localeImports = localePairs.map(([locale, varName]) => `import ${varName} from "date-fns/locale/${locale}";`);
+    // create locale lookup table that is later used: locales = {'en-GB': enGB, 'de': de}
+    const localesAlias = localePairs.map(([locale, varName]) => {
+      return `"${locale}": ${varName},`;
+    });
+
+    return `
+${localeImports.join('\n')}
+const locales = { ${localesAlias.join('\n')} };`;
+  } else {
+    // include all locales
+    return 'import locales from "date-fns/locale";';
+  }
+}
 
 module.exports = {
   name: require('./package').name,
@@ -22,9 +50,15 @@ module.exports = {
       ...addonOptions,
     };
 
-    const Funnel = require('broccoli-funnel');
+    const localeModuledTree = Replace(tree, {
+      files: ['localized.js'],
+      pattern: {
+        match: /\/\/ DATE_FNS_LOCALE_START.*DATE_FNS_LOCALE_END/gs,
+        replacement: buildLocaleImport(includeLocales),
+      }
+    });
 
-    let namespacedTree = new Funnel(tree, {
+    let namespacedTree = new Funnel(localeModuledTree, {
       srcDir: '/',
       destDir: `/ember-power-calendar-utils`,
       annotation: `Addon#treeForVendor (${this.name})`,

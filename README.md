@@ -48,7 +48,23 @@ This addon provides multiple ways to localize the calendar.
 
 ### Using date-fns/locale
 
-By default, `date-fns/locale` is imported and used if you configured the power-calendar locale.
+By default, all of `date-fns/locale` is imported and used if you configured the power-calendar locale.
+**Note**: this will include ~360 KB of Javascript.
+
+---
+
+If you only want to support only a subset of all `date-fns/locale` locales, you can pass them as a list to the addon options:
+
+```js
+const app = new EmberApp(defaults, {
+    'ember-power-calendar-date-fns': {
+      // include only 'en', 'zh-CN' and 'de' locale
+      includeLocales: ['en', 'zh-CN', 'de']
+    }
+});
+```
+
+This will cause the addon to build imports that directly load the specified locales.
 
 ### DIY
 
