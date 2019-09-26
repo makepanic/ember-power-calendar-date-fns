@@ -1,41 +1,41 @@
 <h2 id="title">Welcome to Ember</h2>
 
-<h3>power-calendar</h3>
+<h3>&lt;PowerCalendar /&gt;</h3>
 <div id="power-calendar">
-  {{#power-calendar
-    center=someDate
-    selected=selected
-    onSelect=(action (mut selected) value="date")
-    onCenterChange=(action (mut someDate) value="date") as |cal|
-  }}
-    {{cal.nav}}
-    {{cal.days}}
-  {{/power-calendar}}
+    <PowerCalendar
+            @center={{someDate}}
+            @selected={{selected}}
+            @onSelect={{action (mut selected) value="date"}}
+            @onCenterChange={{action (mut someDate) value="date"}}
+            as |cal|>
+        <cal.Nav/>
+        <cal.Days/>
+    </PowerCalendar>
 </div>
 
-<h3>power-calendar-range</h3>
+<h3>&lt;PowerCalendarRange /&gt;</h3>
 <div id="power-calendar-range">
-  {{#power-calendar-range
-    center=someDate
-    selected=selectedRange
-    minRange="1w"
-    onSelect=(action (mut selectedRange) value="_date")
-    onCenterChange=(action (mut someDate) value="_date") as |cal|
-  }}
-    {{cal.nav}}
-    {{cal.days}}
-  {{/power-calendar-range}}
+    <PowerCalendarRange
+            @center={{someDate}}
+            @selected={{selectedRange}}
+            @minRange="1w"
+            @onSelect={{action (mut selectedRange) value="_date"}}
+            @onCenterChange={{action (mut someDate) value="_date"}}
+            as |cal|>
+        <cal.Nav/>
+        <cal.Days/>
+    </PowerCalendarRange>
 </div>
 
-<h3>power-calendar-multiple</h3>
+<h3>&lt;PowerCalendarMultiple /&gt;</h3>
 <div id="power-calendar-multiple">
-  {{#power-calendar-multiple
-    center=someDate
-    selected=selectedMultiple
-    onSelect=(action (mut selectedMultiple) value="_date")
-    onCenterChange=(action (mut someDate) value="_date") as |cal|
-  }}
-    {{cal.nav}}
-    {{cal.days}}
-  {{/power-calendar-multiple}}
+    <PowerCalendarMultiple
+            @center={{someDate}}
+            @selected={{selectedMultiple}}
+            @onSelect={{action (mut selectedMultiple) value="_date"}}
+            @onCenterChange={{action (mut someDate) value="_date"}}
+            as |cal|>
+        <cal.Nav/>
+        <cal.Days/>
+    </PowerCalendarMultiple>
 </div>

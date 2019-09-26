@@ -17,13 +17,14 @@ you don't want to use moment.js or [Luxon](https://moment.github.io/luxon/).
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v2.18 or above
-* Ember CLI v2.13 or above
+* Ember.js v3.11 or above
+* Node.js v10 or above
 
-| date-fns | ember-power-calendar-date-fns |
-| -------------:| -----:|
-| 1.x | &lt; 0.3 |
-| 2.x | &gt; 0.3 |
+| ember | date-fns | ember-power-calendar-date-fns |
+| -------:| -------------:| -----:|
+| ? | 1.x | &lt; 0.3 |
+| ? | 2.x | &ge; 0.3 |
+| &ge; 3.11 | 2.x | &ge; 0.3 |
 
 Installation
 ------------------------------------------------------------------------------
