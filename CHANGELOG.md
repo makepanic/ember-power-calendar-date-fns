@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/makepanic/ember-power-calendar-date-fns/compare/v0.3.0...v0.3.1) (2019-09-26)
+
+
+### Features
+
+* allow user to exclude date-fns locales ([c57ceb4](https://github.com/makepanic/ember-power-calendar-date-fns/commit/c57ceb4)), closes [#10](https://github.com/makepanic/ember-power-calendar-date-fns/issues/10)
+* allow user to specify which date-fns/locale to include ([b4b275a](https://github.com/makepanic/ember-power-calendar-date-fns/commit/b4b275a)), closes [#10](https://github.com/makepanic/ember-power-calendar-date-fns/issues/10)
+
+
+
 ## [0.3.0](https://github.com/makepanic/ember-power-calendar-date-fns/compare/v0.2.1...v0.3.0) (2019-09-25)
 
 
