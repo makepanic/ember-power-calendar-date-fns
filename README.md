@@ -59,13 +59,16 @@ If you only want to support only a subset of all `date-fns/locale` locales, you 
 ```js
 const app = new EmberApp(defaults, {
     'ember-power-calendar-date-fns': {
-      // include only 'en', 'zh-CN' and 'de' locale
-      includeLocales: ['en', 'zh-CN', 'de']
+      // include only 'en-US', 'en-GB', 'zh-CN' and 'de' locale
+      includeLocales: ['en-US', 'en-GB', 'zh-CN', 'de']
     }
 });
 ```
 
 This will cause the addon to build imports that directly load the specified locales.
+
+**Note**: 
+* you can only include locales that date-fns exports. See [locale](https://github.com/date-fns/date-fns/tree/master/src/locale) for locales that this addon can import. (See also [Supported Languages](https://date-fns.org/v1.30.1/docs/I18n#supported-languages)).
 
 ### DIY
 
