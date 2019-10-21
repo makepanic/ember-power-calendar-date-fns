@@ -10,7 +10,7 @@ import {
   getWeekdays as unlocalizedWeekdays,
   localeStartOfWeek as unlocalizedStartOfWeek,
 } from './unlocalized';
-
+import {normalizeDateFormat} from "./format-util";
 export {
   add,
   startOf,
@@ -39,16 +39,17 @@ export function formatDate(date, dateFormat, locale = null) {
      - useAdditionalDayOfYearTokens is required to use the YYYY and YY tokens for year
      - useAdditionalWeekYearTokens is required to use the DD and D tokens for day
    */
+  const normalizedFormat = normalizeDateFormat(dateFormat);
   if (locale && locales[locale]) {
-    return format(date, dateFormat, {
+    return format(date, normalizedFormat, {
       locale: locales[locale],
-      useAdditionalDayOfYearTokens: true,
-      useAdditionalWeekYearTokens: true
+      useAdditionalDayOfYearTokens: false,
+      useAdditionalWeekYearTokens: false
     });
   } else {
-    return format(date, dateFormat, {
-      useAdditionalDayOfYearTokens: true,
-      useAdditionalWeekYearTokens: true
+    return format(date, normalizedFormat, {
+      useAdditionalDayOfYearTokens: false,
+      useAdditionalWeekYearTokens: false
     });
   }
 }
