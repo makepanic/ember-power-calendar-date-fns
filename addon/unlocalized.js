@@ -19,6 +19,7 @@ import {
   startOfWeek as _startOfWeek,
 } from 'date-fns';
 import {DEBUG} from '@glimmer/env';
+import {normalizeDateFormat} from "./format-util";
 
 function unsupported(method, param, ...args) {
   throw `unsupported parameter: ${method}(${args.join(',')})`;
@@ -36,9 +37,10 @@ export function add(date, quantity, unit) {
 }
 
 export function formatDate(date, dateFormat) {
-  return format(date, dateFormat, {
-    useAdditionalDayOfYearTokens: true,
-    useAdditionalWeekYearTokens: true
+  const normalizedFormat = normalizeDateFormat(dateFormat);
+  return format(date, normalizedFormat, {
+    useAdditionalDayOfYearTokens: false,
+    useAdditionalWeekYearTokens: false
   });
 }
 
