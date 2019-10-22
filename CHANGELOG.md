@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/makepanic/ember-power-calendar-date-fns/compare/v0.4.0...v0.4.1) (2019-10-22)
+
+
+### Bug Fixes
+
+* normalize known power-calendar format strings to date-fns v2 ([2762f49](https://github.com/makepanic/ember-power-calendar-date-fns/commit/2762f49)), closes [#17](https://github.com/makepanic/ember-power-calendar-date-fns/issues/17)
+
+
+
 ## [0.4.0](https://github.com/makepanic/ember-power-calendar-date-fns/compare/v0.3.1...v0.4.0) (2019-09-26)
 
 
