@@ -1,23 +1,21 @@
 /*eslint no-console: ["error", { allow: ["debug"] }] */
-import {
-  addDays,
-  addMonths,
-  addWeeks,
-  differenceInMilliseconds,
-  endOfDay,
-  endOfISOWeek,
-  endOfMonth,
-  format,
-  getDay,
-  getISODay,
-  isAfter as _isAfter,
-  isBefore as _isBefore,
-  isSameDay,
-  startOfDay,
-  startOfISOWeek,
-  startOfMonth,
-  startOfWeek as _startOfWeek,
-} from 'date-fns';
+import addDays from "date-fns/addDays";
+import addMonths from "date-fns/addMonths";
+import addWeeks from "date-fns/addWeeks";
+import differenceInMilliseconds from "date-fns/differenceInMilliseconds";
+import endOfDay from "date-fns/endOfDay";
+import endOfISOWeek from "date-fns/endOfISOWeek";
+import endOfMonth from "date-fns/endOfMonth";
+import format from "date-fns/format";
+import getDay from "date-fns/getDay";
+import getISODay from "date-fns/getISODay";
+import isSameDay from "date-fns/isSameDay";
+import startOfDay from "date-fns/startOfDay";
+import startOfISOWeek from "date-fns/startOfISOWeek";
+import startOfMonth from "date-fns/startOfMonth";
+import _isAfter from "date-fns/isAfter";
+import _isBefore from "date-fns/isBefore";
+import _startOfWeek from "date-fns/startOfWeek";
 import {DEBUG} from '@glimmer/env';
 import {normalizeDateFormat} from "./format-util";
 

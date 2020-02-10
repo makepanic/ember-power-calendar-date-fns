@@ -3,7 +3,9 @@
 import locales from "date-fns/locale";
 // DATE_FNS_LOCALE_END
 
-import {startOfWeek as _startOfWeek, format, getDay} from "date-fns";
+import _startOfWeek from "date-fns/startOfWeek";
+import format from "date-fns/format";
+import getDay from "date-fns/getDay";
 import {
   getWeekdaysShort as unlocalizedWeekdaysShort,
   getWeekdaysMin as unlocalizedWeekdaysMin,
