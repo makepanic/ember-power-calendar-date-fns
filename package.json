@@ -63,5 +63,17 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "standard-version": {
+    "types": [
+      {"type": "feat", "section": "Features"},
+      {"type": "fix", "section": "Bug Fixes"},
+      {"type": "chore", "section": "Chore"},
+      {"type": "docs", "section": "Docs"},
+      {"type": "style", "hidden": true},
+      {"type": "refactor", "section": "Refactoring"},
+      {"type": "perf", "section":  "Performance Improvements"},
+      {"type": "test", "hidden": true}
+    ]
   }
 }
