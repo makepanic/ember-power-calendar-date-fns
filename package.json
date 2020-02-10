@@ -1,6 +1,6 @@
 {
   "name": "@makepanic/ember-power-calendar-date-fns",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon",
@@ -66,14 +66,38 @@
   },
   "standard-version": {
     "types": [
-      {"type": "feat", "section": "Features"},
-      {"type": "fix", "section": "Bug Fixes"},
-      {"type": "chore", "section": "Chore"},
-      {"type": "docs", "section": "Docs"},
-      {"type": "style", "hidden": true},
-      {"type": "refactor", "section": "Refactoring"},
-      {"type": "perf", "section":  "Performance Improvements"},
-      {"type": "test", "hidden": true}
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "chore",
+        "section": "Chore"
+      },
+      {
+        "type": "docs",
+        "section": "Docs"
+      },
+      {
+        "type": "style",
+        "hidden": true
+      },
+      {
+        "type": "refactor",
+        "section": "Refactoring"
+      },
+      {
+        "type": "perf",
+        "section": "Performance Improvements"
+      },
+      {
+        "type": "test",
+        "hidden": true
+      }
     ]
   }
 }
