@@ -37,7 +37,7 @@ ember install @makepanic/ember-power-calendar-date-fns
 Add the following lines into you `app/app.js` to register this meta addon to `ember-power-calendar`
 ```
 import { registerDateLibrary } from 'ember-power-calendar';
-import DateUtils from 'ember-power-calendar-luxon';
+import DateUtils from '@makepanic/ember-power-calendar-date-fns';
 
 registerDateLibrary(DateUtils);
 ```
