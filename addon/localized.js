@@ -13,6 +13,29 @@ import {
   localeStartOfWeek as unlocalizedStartOfWeek,
 } from './unlocalized';
 import { normalizeDateFormat } from './format-util';
+import {
+  add,
+  startOf,
+  endOf,
+  weekday,
+  isAfter,
+  isBefore,
+  isSame,
+  diff,
+  normalizeDate,
+  normalizeRangeActionValue,
+  normalizeMultipleActionValue,
+  normalizeCalendarDay,
+  normalizeCalendarValue,
+  normalizeDuration,
+  getDefaultLocale,
+  withLocale,
+  isBetween,
+  isoWeekday,
+  startOfWeek,
+  endOfWeek,
+} from './unlocalized';
+
 export {
   add,
   startOf,
@@ -35,6 +58,34 @@ export {
   startOfWeek,
   endOfWeek,
 } from './unlocalized';
+
+export default {
+  add,
+  formatDate,
+  startOf,
+  endOf,
+  weekday,
+  isoWeekday,
+  getWeekdaysShort,
+  getWeekdaysMin,
+  getWeekdays,
+  isAfter,
+  isBefore,
+  isSame,
+  isBetween,
+  diff,
+  normalizeDate,
+  normalizeRangeActionValue,
+  normalizeMultipleActionValue,
+  normalizeCalendarDay,
+  withLocale,
+  normalizeCalendarValue,
+  normalizeDuration,
+  getDefaultLocale,
+  localeStartOfWeek,
+  startOfWeek,
+  endOfWeek,
+};
 
 export function formatDate(date, dateFormat, locale = null) {
   /* date-fns now uses [Unicode Tokens]{@link https://date-fns.org/v2.2.1/docs/Unicode-Tokens} so the following flags are required:

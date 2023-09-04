@@ -42,12 +42,6 @@ const locales = { ${localesAlias.join('\n')} };`;
 module.exports = {
   name: require('./package').name,
 
-  /**
-   * This method tries to rename the import path of the addon from
-   * `ember-power-calendar-date-fns` to `ember-power-calendar-util`.
-   * This "agnostic" import path should make easy to swap this addon
-   * by another one that exposes the same API from the same import path.
-   */
   treeForAddon(tree) {
     const options =
       (this.parent && this.parent.options) ||
@@ -69,7 +63,7 @@ module.exports = {
 
     let namespacedTree = new Funnel(localeModuledTree, {
       srcDir: '/',
-      destDir: `/ember-power-calendar-utils`,
+      destDir: this.name,
       annotation: `Addon#treeForVendor (${this.name})`,
       getDestinationPath(relativePath) {
         // if we include locales, handle localized.js as index file, else unlocalized
@@ -96,13 +90,8 @@ module.exports = {
       ],
     });
 
-    return this.preprocessJs(
-      namespacedTree,
-      '/',
-      'ember-power-calendar-utils',
-      {
-        registry: this.registry,
-      }
-    );
+    return this.preprocessJs(namespacedTree, '/', this.name, {
+      registry: this.registry,
+    });
   },
 };
