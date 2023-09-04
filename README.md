@@ -17,8 +17,9 @@ you don't want to use moment.js or [Luxon](https://moment.github.io/luxon/).
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v3.11 or above
-* Node.js v10 or above
+* Ember.js v3.28 or above
+* Ember CLI v3.28 or above
+* Node.js v16 or above
 
 | ember | date-fns | ember-power-calendar-date-fns |
 | -------:| -------------:| -----:|
@@ -31,6 +32,14 @@ Installation
 
 ```
 ember install @makepanic/ember-power-calendar-date-fns
+```
+
+Add the following lines into you `app/app.js` to register this meta addon to `ember-power-calendar`
+```
+import { registerDateLibrary } from 'ember-power-calendar';
+import DateUtils from '@makepanic/ember-power-calendar-date-fns';
+
+registerDateLibrary(DateUtils);
 ```
 
 
