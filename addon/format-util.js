@@ -3,8 +3,8 @@
 const knownFormats = {
   'YYYY-MM-DD': 'yyyy-MM-dd',
   'MMMM YYYY': 'MMMM yyyy',
-  'MMMM': 'MMMM',
-  'YYYY': 'yyyy'
+  MMMM: 'MMMM',
+  YYYY: 'yyyy',
 };
 
 export function normalizeDateFormat(formatString) {
