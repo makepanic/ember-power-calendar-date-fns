@@ -3,9 +3,11 @@
 import locales from 'date-fns/locale';
 // DATE_FNS_LOCALE_END
 
-import _startOfWeek from 'date-fns/startOfWeek';
-import format from 'date-fns/format';
-import getDay from 'date-fns/getDay';
+import { startOfWeek } from 'date-fns/startOfWeek';
+import { format } from 'date-fns/format';
+import { getDay } from 'date-fns/getDay';
+import { isAfter } from 'date-fns/isAfter';
+import { isBefore } from 'date-fns/isBefore';
 import {
   getWeekdaysShort as unlocalizedWeekdaysShort,
   getWeekdaysMin as unlocalizedWeekdaysMin,
@@ -18,8 +20,6 @@ import {
   startOf,
   endOf,
   weekday,
-  isAfter,
-  isBefore,
   isSame,
   diff,
   normalizeDate,
@@ -32,7 +32,6 @@ import {
   withLocale,
   isBetween,
   isoWeekday,
-  startOfWeek,
   endOfWeek,
 } from './unlocalized';
 
@@ -41,8 +40,6 @@ export {
   startOf,
   endOf,
   weekday,
-  isAfter,
-  isBefore,
   isSame,
   diff,
   normalizeDate,
@@ -160,7 +157,7 @@ export function getWeekdays(locale = null) {
 export function localeStartOfWeek(locale) {
   if (locale && locales[locale]) {
     return getDay(
-      _startOfWeek(new Date(), {
+      startOfWeek(new Date(), {
         locale: locales[locale],
       })
     );

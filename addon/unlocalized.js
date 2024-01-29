@@ -1,21 +1,19 @@
 /*eslint no-console: ["error", { allow: ["debug"] }] */
-import addDays from 'date-fns/addDays';
-import addMonths from 'date-fns/addMonths';
-import addWeeks from 'date-fns/addWeeks';
-import differenceInMilliseconds from 'date-fns/differenceInMilliseconds';
-import endOfDay from 'date-fns/endOfDay';
-import endOfISOWeek from 'date-fns/endOfISOWeek';
-import endOfMonth from 'date-fns/endOfMonth';
-import format from 'date-fns/format';
-import getDay from 'date-fns/getDay';
-import getISODay from 'date-fns/getISODay';
-import isSameDay from 'date-fns/isSameDay';
-import startOfDay from 'date-fns/startOfDay';
-import startOfISOWeek from 'date-fns/startOfISOWeek';
-import startOfMonth from 'date-fns/startOfMonth';
-import _isAfter from 'date-fns/isAfter';
-import _isBefore from 'date-fns/isBefore';
-import _startOfWeek from 'date-fns/startOfWeek';
+import { addDays } from 'date-fns/addDays';
+import { addMonths } from 'date-fns/addMonths';
+import { addWeeks } from 'date-fns/addWeeks';
+import { differenceInMilliseconds } from 'date-fns/differenceInMilliseconds';
+import { endOfDay } from 'date-fns/endOfDay';
+import { endOfISOWeek } from 'date-fns/endOfISOWeek';
+import { endOfMonth } from 'date-fns/endOfMonth';
+import { format } from 'date-fns/format';
+import { getDay } from 'date-fns/getDay';
+import { getISODay } from 'date-fns/getISODay';
+import { isSameDay } from 'date-fns/isSameDay';
+import { startOfDay } from 'date-fns/startOfDay';
+import { startOfISOWeek } from 'date-fns/startOfISOWeek';
+import { startOfMonth } from 'date-fns/startOfMonth';
+import { _startOfWeek } from 'date-fns/startOfWeek';
 import { DEBUG } from '@glimmer/env';
 import { normalizeDateFormat } from './format-util';
 
@@ -114,14 +112,6 @@ export function getWeekdays() {
     'Friday',
     'Saturday',
   ];
-}
-
-export function isAfter(date1, date2) {
-  return _isAfter(date1, date2);
-}
-
-export function isBefore(date1, date2) {
-  return _isBefore(date1, date2);
 }
 
 export function isSame(date1, date2, unit) {
